@@ -3,6 +3,7 @@ const imageFrame = document.getElementById("image-frame");
 const textSize = document.getElementById("size");
 const btnContainer = document.getElementById("btn-container");
 const textHappy = document.getElementById("happy");
+const textCircle = document.getElementById("circle");
 
 var file = false;
 
@@ -53,6 +54,8 @@ function checkImageColor(image) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const pixels = imageData.data;
 
+  checkCircle(canvas.width, canvas.height, pixels);
+
   // Creating a counter of "happy" pixels
   var happyPixels = 0;
 
@@ -77,6 +80,39 @@ function checkImageColor(image) {
   }
 }
 
+function checkCircle(width, height, pixels) {
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const radius = 256;
+  let transparentInside = false;
+  let isCircle = true;
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const distanceCenter = Math.sqrt(
+        Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2)
+      );
+
+      // Checking if the aplha = 0
+      if (distanceCenter <= radius && pixels[y * width * 4 + x * 4 + 3] == 0) {
+        console.log(distanceCenter, radius);
+        console.log(pixels[y * width * 4 + x * 4 + 3]);
+        transparentInside = true;
+      }
+
+      if (distanceCenter > radius && pixels[y * width * 4 + x * 4 + 3] !== 0) {
+        isCircle = false;
+      }
+    }
+  }
+  if (transparentInside) {
+    textCircle.textContent =
+      "Your image has transparent pixels inside its radius";
+  } else if (!isCircle) {
+    textCircle.textContent = "Your image is not a circle";
+  } else {
+    textCircle.textContent = "Your image is a circle!";
+  }
+}
 
 // Choosing style of a different size image
 function scaleDownBtn() {
