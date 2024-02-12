@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hey, upload your image rigth there</h1>
+        <form action="" class="form-input">
+            <label for="image-input"></label>
+            <input type="file" id="image-input" accept=".png">            
+        </form>
+        <p id="happy"></p>
+        <p id="size"></p>
+        <div style="display: none" id="btn-container">
+            <button id="fill-btn" onclick="scaleDownBtn()">Scale Down</button>
+            <button id="cover-btn" onclick="coverBtn()">Cover</button>
+        </div>
+        <img src="../assets/app.svg" id="image-frame" class="profile" alt="">
+    </div>
+</body>
+<script src="app.js"></script>
+</html>

@@ -1,0 +1,32 @@
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: fit-content;
+    width: 50vw;
+    border: solid #696969;
+    border-radius: 2%;
+    padding: 20px;
+}
+
+.form-input{
+    border-radius: solid #696969;
+    padding: 5px;
+}
+.profile{
+    margin-top: 30px;
+    height: 256px;
+    width: 256px;
+    border-radius: 50%;
+}
+
+#image-frame{
+    align-self: center;
+}
+
+
+#btn-container{
+    justify-content: space-evenly;
+}
